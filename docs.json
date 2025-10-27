@@ -57,12 +57,54 @@
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Fantasy League",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/fantasy-league/get-by-id",
+              "api-reference/fantasy-league/get-list",
+              "api-reference/fantasy-league/create",
+              "api-reference/fantasy-league/update",
+              "api-reference/fantasy-league/fixtures",
+              "api-reference/fantasy-league/clubs",
+              "api-reference/fantasy-league/gameweeks"
+            ]
+          },
+          {
+            "group": "Mini League",
+            "pages": [
+              "api-reference/mini-league/get-by-id",
+              "api-reference/mini-league/get-list",
+              "api-reference/mini-league/create"
+            ]
+          },
+          {
+            "group": "Player Prices",
+            "pages": [
+              "api-reference/price/upload",
+              "api-reference/price/get-list"
+            ]
+          },
+          {
+            "group": "Points",
+            "pages": [
+              "api-reference/points/get-events",
+              "api-reference/points/upload-config"
+            ]
+          },
+          {
+            "group": "User",
+            "pages": [
+              "api-reference/user/get-list",
+              "api-reference/user/create",
+              "api-reference/user/update-user"
+            ]
+          },
+          {
+            "group": "Squad",
+            "pages": [
+              "api-reference/squad/list",
+              "api-reference/squad/get-by-id",
+              "api-reference/squad/get-lineup",
+              "api-reference/squad/create"
             ]
           }
         ]
@@ -102,15 +144,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

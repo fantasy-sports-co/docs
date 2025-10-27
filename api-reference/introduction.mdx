@@ -1,33 +1,44 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: Learn how to integrate your apps with our full suite of RESTful APIs.
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  You have to create a free account with us in order to gain access to an API key to get started.
 </Note>
 
-## Welcome
+## Base URL
+To gain access to the REST API, all requests need to be made to the base url `https://sandbox.api.fantasyfutbol.app/v1`
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Authenticating your Requests
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Authenticate your API calls using the API key provided to you on signup. 
+<Note>
+  We currently do not have a developer dashboard. Our signup flow does allow for secure delivery of your API key to your email using https://privatebin.net
+</Note>
 
-## Authentication
+To autheticate your API calls, attach the below request header in your request.<br/>
+`x-api-key=<YOUR_API_KEY>`
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## Response Pattern
+All API endpoints return responses in JSON format. The content type for responses is set to `application/JSON`.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
+<Note>
+  Not all endpoints return the `paging` information. Endpoints that return data in paginated format will be indicated in docs.
+</Note>
+
+
+```JSON
+{
+  "statusCode": "[number]",
+  "message": "[string]",
+  "data": "[object]",
+  "paging": {
+    "page": "[number]",
+    "page_total": "[number]",
+    "per_page": "[number]",
+    "current": "[number]",
+    "total": "[number]"
   }
-]
+}
 ```
