@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://sandbox.api.fantasyfutbol.app/v1"
     }
   ],
   "security": [
@@ -19,76 +19,149 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/auth/account": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "summary": "Get account",
+        "tags": [
+          "auth"
+        ],
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
+            "description": "Get account",
+            "headers": {
+              "Server": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
+                  "type": "string"
                 }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
+              },
+              "Date": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "string"
                 }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
+              },
+              "Content-Length": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "type": "integer"
                 }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
+              },
+              "Connection": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "string"
+                }
+              },
+              "Content-Security-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Frame-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-RateLimit-Limit-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Limit-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -96,14 +169,214 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/fantasy-league": {
+      "post": {
+        "summary": "Create fantasy league",
+        "tags": [
+          "Fantasy leagues"
+        ],
         "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "league_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get list",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "summary": "Update fantasy league",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "is_active": {
+                    "type": "boolean"
+                  },
+                  "logo_url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fantasy-league/{id}": {
+      "get": {
+        "summary": "Get fantasy league by id",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "ID of the fantasy league to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/fantasy-league/{id}/clubs": {
+      "get": {
+        "summary": "Get clubs",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the fantasy league to retrieve participating football clubs",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/fantasy-league/{id}/gameweeks": {
+      "get": {
+        "summary": "Get gameweeks",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "deprecated": false
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the fantasy league to retrieve participating gameweeks",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/fantasy-league/{id}/fixtures": {
+      "get": {
+        "summary": "Get fixtures",
+        "tags": [
+          "Fantasy leagues"
+        ],
+        "parameters": [
+          {
+            "name": "game_week_id",
+            "in": "query",
+            "required": false,
+            "description": "Filter fixtures by game_week_id",
+            "schema": {
+              "deprecated": false
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the fantasy league to retrieve participating fixtures",
             "required": true,
             "schema": {
               "type": "integer",
@@ -112,17 +385,147 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
+          "200": {
+            "description": "All fixtures",
+            "headers": {
+              "Server": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "string"
                 }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Security-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cross-Origin-Resource-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Origin-Agent-Cluster": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-DNS-Prefetch-Control": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Download-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Frame-Options": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Permitted-Cross-Domain-Policies": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-XSS-Protection": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-RateLimit-Limit-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset-Minute": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Limit-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset-Day": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
               }
             }
           }
@@ -205,12 +608,6 @@
             "type": "string"
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }

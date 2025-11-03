@@ -57,15 +57,21 @@
             ]
           },
           {
+            "group": "Auth account",
+            "pages": [
+              "api-reference/auth/get-account"
+            ]
+          },
+          {
             "group": "Fantasy League",
             "pages": [
-              "api-reference/fantasy-league/get-by-id",
               "api-reference/fantasy-league/get-list",
+              "api-reference/fantasy-league/get-by-id",
               "api-reference/fantasy-league/create",
               "api-reference/fantasy-league/update",
-              "api-reference/fantasy-league/fixtures",
               "api-reference/fantasy-league/clubs",
-              "api-reference/fantasy-league/gameweeks"
+              "api-reference/fantasy-league/gameweeks",
+              "api-reference/fantasy-league/fixtures"
             ]
           },
           {
