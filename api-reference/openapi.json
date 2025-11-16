@@ -38,130 +38,341 @@
         "responses": {
           "200": {
             "description": "Get account",
-            "headers": {
-              "Server": {
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Content-Length": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Content-Security-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Cross-Origin-Opener-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Cross-Origin-Resource-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Origin-Agent-Cluster": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Referrer-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Strict-Transport-Security": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Content-Type-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-DNS-Prefetch-Control": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Download-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Frame-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Permitted-Cross-Domain-Policies": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-XSS-Protection": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Limit-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "ETag": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "default": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "tier": {
+                          "type": "string"
+                        },
+                        "is_active": {
+                          "type": "boolean"
+                        },
+                        "api_key_active": {
+                          "type": "boolean"
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "pricing": {
+                              "type": "object",
+                              "properties": {
+                                "currency": {
+                                  "type": "string",
+                                  "example": "USD"
+                                },
+                                "per_year": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "example": 0
+                                },
+                                "per_month": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "example": 0
+                                }
+                              },
+                              "required": [
+                                "currency",
+                                "per_year",
+                                "per_month"
+                              ]
+                            },
+                            "features": {
+                              "type": "object",
+                              "properties": {
+                                "users": {
+                                  "type": "object",
+                                  "properties": {
+                                    "max": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "enum": [
+                                        "ok",
+                                        "at_limit",
+                                        "over_limit"
+                                      ]
+                                    },
+                                    "is_blocked": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "max",
+                                    "used",
+                                    "remaining",
+                                    "state",
+                                    "is_blocked"
+                                  ]
+                                },
+                                "squads": {
+                                  "type": "object",
+                                  "properties": {
+                                    "max": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "enum": [
+                                        "ok",
+                                        "at_limit",
+                                        "over_limit"
+                                      ]
+                                    },
+                                    "is_blocked": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "max",
+                                    "used",
+                                    "remaining",
+                                    "state",
+                                    "is_blocked"
+                                  ]
+                                },
+                                "contests": {
+                                  "type": "object",
+                                  "properties": {
+                                    "max": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "enum": [
+                                        "ok",
+                                        "at_limit",
+                                        "over_limit"
+                                      ]
+                                    },
+                                    "is_blocked": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "max",
+                                    "used",
+                                    "remaining",
+                                    "state",
+                                    "is_blocked"
+                                  ]
+                                },
+                                "mini_leagues": {
+                                  "type": "object",
+                                  "properties": {
+                                    "max": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "enum": [
+                                        "ok",
+                                        "at_limit",
+                                        "over_limit"
+                                      ]
+                                    },
+                                    "is_blocked": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "max",
+                                    "used",
+                                    "remaining",
+                                    "state",
+                                    "is_blocked"
+                                  ]
+                                },
+                                "fantasy_leagues": {
+                                  "type": "object",
+                                  "properties": {
+                                    "max": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "enum": [
+                                        "ok",
+                                        "at_limit",
+                                        "over_limit"
+                                      ]
+                                    },
+                                    "is_blocked": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "max",
+                                    "used",
+                                    "remaining",
+                                    "state",
+                                    "is_blocked"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "users",
+                                "squads",
+                                "contests",
+                                "mini_leagues",
+                                "fantasy_leagues"
+                              ]
+                            },
+                            "rate_limit": {
+                              "type": "object",
+                              "properties": {
+                                "per_day": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "window": {
+                                      "type": "string",
+                                      "enum": [
+                                        "day"
+                                      ]
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "reset_at": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    }
+                                  },
+                                  "required": [
+                                    "limit",
+                                    "window",
+                                    "used",
+                                    "remaining",
+                                    "reset_at"
+                                  ]
+                                },
+                                "per_minute": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "window": {
+                                      "type": "string",
+                                      "enum": [
+                                        "minute"
+                                      ]
+                                    },
+                                    "used": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "remaining": {
+                                      "type": "integer",
+                                      "minimum": 0
+                                    },
+                                    "reset_at": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    }
+                                  },
+                                  "required": [
+                                    "limit",
+                                    "window",
+                                    "used",
+                                    "remaining",
+                                    "reset_at"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "per_day",
+                                "per_minute"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "pricing",
+                            "features",
+                            "rate_limit"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "tier",
+                        "is_active"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "data"
+                  ]
                 }
               }
             }
@@ -185,7 +396,98 @@
             }
           }
         ],
-        "responses": {},
+        "responses": {
+          "201": {
+            "description": "Fantasy league created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Fantasy league created"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 10
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Chidera's Classic Prem"
+                        },
+                        "is_active": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2025-11-16T17:14:39.078Z"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2025-11-16T17:14:39.078Z"
+                        },
+                        "logo_url": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": null
+                        },
+                        "created_by": {
+                          "type": "integer",
+                          "example": 4
+                        },
+                        "max_entries_per_user": {
+                          "type": "integer",
+                          "example": 1
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "is_active",
+                        "created_at",
+                        "updated_at",
+                        "created_by",
+                        "max_entries_per_user"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "statusCode": 201,
+                    "message": "Fantasy league created",
+                    "data": {
+                      "id": 10,
+                      "name": "Fnatasy Premier League 1",
+                      "is_active": true,
+                      "created_at": "2025-11-16T17:14:39.078Z",
+                      "updated_at": "2025-11-16T17:14:39.078Z",
+                      "logo_url": null,
+                      "created_by": 4,
+                      "max_entries_per_user": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "requestBody": {
           "content": {
             "application/json": {
@@ -219,7 +521,353 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Fantasy leagues retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Fantasy leagues retrieved"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "is_active": {
+                            "type": "boolean"
+                          },
+                          "logo_url": {
+                            "type": "string"
+                          },
+                          "leagues": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "year": {
+                                  "type": "string"
+                                },
+                                "season": {
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "type": "string"
+                                },
+                                "end_date": {
+                                  "type": "string",
+                                  "format": "date"
+                                },
+                                "continent": {
+                                  "type": "string"
+                                },
+                                "is_active": {
+                                  "type": "boolean"
+                                },
+                                "created_at": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "start_date": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            }
+                          },
+                          "squad_config": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "formation": {
+                                "type": "string"
+                              },
+                              "league_id": {
+                                "type": "integer"
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "classification": {
+                                "type": "string"
+                              },
+                              "required_bench": {
+                                "type": "integer"
+                              },
+                              "price_multiplier": {
+                                "type": "integer"
+                              },
+                              "required_players": {
+                                "type": "integer"
+                              },
+                              "required_forwards": {
+                                "type": "integer"
+                              },
+                              "required_defenders": {
+                                "type": "integer"
+                              },
+                              "maximum_price_entry": {
+                                "type": "integer"
+                              },
+                              "minimum_price_entry": {
+                                "type": "integer"
+                              },
+                              "price_fall_multiple": {
+                                "type": "number"
+                              },
+                              "price_rise_multiple": {
+                                "type": "number"
+                              },
+                              "default_squad_budget": {
+                                "type": "integer"
+                              },
+                              "max_players_per_team": {
+                                "type": "integer"
+                              },
+                              "max_transfers_per_gw": {
+                                "type": "integer"
+                              },
+                              "price_entry_multiple": {
+                                "type": "number"
+                              },
+                              "required_goalkeepers": {
+                                "type": "integer"
+                              },
+                              "required_midfielders": {
+                                "type": "integer"
+                              },
+                              "required_starting_squad": {
+                                "type": "integer"
+                              },
+                              "default_starting_forwards": {
+                                "type": "integer"
+                              },
+                              "minimum_starting_forwards": {
+                                "type": "integer"
+                              },
+                              "default_starting_defenders": {
+                                "type": "integer"
+                              },
+                              "minimum_starting_defenders": {
+                                "type": "integer"
+                              },
+                              "default_starting_goalkeepers": {
+                                "type": "integer"
+                              },
+                              "default_starting_midfielders": {
+                                "type": "integer"
+                              },
+                              "minimum_starting_goalkeepers": {
+                                "type": "integer"
+                              },
+                              "minimum_starting_midfielders": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "points_config": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "league_id": {
+                                "type": "integer"
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "sub_in_points": {
+                                "type": "integer"
+                              },
+                              "bencher_points": {
+                                "type": "integer"
+                              },
+                              "starter_points": {
+                                "type": "integer"
+                              },
+                              "sub_out_points": {
+                                "type": "integer"
+                              },
+                              "goal_save_ratio": {
+                                "type": "integer"
+                              },
+                              "own_goal_points": {
+                                "type": "integer"
+                              },
+                              "red_card_points": {
+                                "type": "integer"
+                              },
+                              "goal_save_points": {
+                                "type": "integer"
+                              },
+                              "yellow_card_points": {
+                                "type": "integer"
+                              },
+                              "forward_goal_points": {
+                                "type": "integer"
+                              },
+                              "penalty_miss_points": {
+                                "type": "integer"
+                              },
+                              "penalty_save_points": {
+                                "type": "integer"
+                              },
+                              "defender_goal_points": {
+                                "type": "integer"
+                              },
+                              "forward_assist_points": {
+                                "type": "integer"
+                              },
+                              "minutes_played_points": {
+                                "type": "integer"
+                              },
+                              "defender_assist_points": {
+                                "type": "integer"
+                              },
+                              "forward_concede_points": {
+                                "type": "integer"
+                              },
+                              "goalkeeper_goal_points": {
+                                "type": "integer"
+                              },
+                              "midfielder_goal_points": {
+                                "type": "integer"
+                              },
+                              "defender_concede_points": {
+                                "type": "integer"
+                              },
+                              "goalkeeper_assist_points": {
+                                "type": "integer"
+                              },
+                              "midfielder_assist_points": {
+                                "type": "integer"
+                              },
+                              "goalkeeper_concede_points": {
+                                "type": "integer"
+                              },
+                              "midfielder_concede_points": {
+                                "type": "integer"
+                              },
+                              "forward_clean_sheet_points": {
+                                "type": "integer"
+                              },
+                              "defender_clean_sheet_points": {
+                                "type": "integer"
+                              },
+                              "forward_goal_concede_points": {
+                                "type": "integer"
+                              },
+                              "defender_goal_concede_points": {
+                                "type": "number"
+                              },
+                              "goalkeeper_clean_sheet_points": {
+                                "type": "integer"
+                              },
+                              "midfielder_clean_sheet_points": {
+                                "type": "integer"
+                              },
+                              "goalkeeper_goal_concede_points": {
+                                "type": "number"
+                              },
+                              "midfielder_goal_concede_points": {
+                                "type": "number"
+                              },
+                              "clean_sheet_eligibility_minutes": {
+                                "type": "integer"
+                              },
+                              "time_onfield_eligibility_minutes": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "current_game_week": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "week": {
+                                "type": "string"
+                              },
+                              "start_date": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "end_date": {
+                                "type": "string",
+                                "format": "date-time"
+                              }
+                            }
+                          },
+                          "next_game_week": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "week": {
+                                "type": "string"
+                              },
+                              "start_date": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "end_date": {
+                                "type": "string",
+                                "format": "date-time"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
       },
       "patch": {
         "summary": "Update fantasy league",
@@ -236,7 +884,103 @@
             }
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "Fantasy league updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Fantasy league updated"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 10
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Fantasy Premier League demo"
+                          },
+                          "is_active": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2025-11-16T17:14:39.078897+00:00"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2025-11-16T17:18:31.596+00:00"
+                          },
+                          "logo_url": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "example": null
+                          },
+                          "created_by": {
+                            "type": "integer",
+                            "example": 4
+                          },
+                          "max_entries_per_user": {
+                            "type": "integer",
+                            "example": 1
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "is_active",
+                          "created_at",
+                          "updated_at",
+                          "created_by",
+                          "max_entries_per_user"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "statusCode": 200,
+                    "message": "Fantasy league updated",
+                    "data": [
+                      {
+                        "id": 10,
+                        "name": "Fantasy Premier League demo",
+                        "is_active": true,
+                        "created_at": "2025-11-16T17:14:39.078897+00:00",
+                        "updated_at": "2025-11-16T17:18:31.596+00:00",
+                        "logo_url": null,
+                        "created_by": 4,
+                        "max_entries_per_user": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "requestBody": {
           "content": {
             "application/json": {
@@ -288,7 +1032,449 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Fantasy league retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Fantasy league retrieved"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 9
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "kitboga"
+                        },
+                        "is_active": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "logo_url": {
+                          "type": "string",
+                          "example": "haha"
+                        },
+                        "leagues": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 7
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Premier League"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "football"
+                              },
+                              "year": {
+                                "type": "string",
+                                "example": "2025"
+                              },
+                              "season": {
+                                "type": "string",
+                                "example": "2025/2026"
+                              },
+                              "country": {
+                                "type": "string",
+                                "example": "England"
+                              },
+                              "end_date": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2026-05-24"
+                              },
+                              "continent": {
+                                "type": "string",
+                                "example": "Europe"
+                              },
+                              "is_active": {
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-08-14T21:47:44.636477"
+                              },
+                              "start_date": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2025-08-15T00:00:00Z"
+                              }
+                            }
+                          }
+                        },
+                        "squad_config": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "example": "cd492594-52f8-4a24-8e2e-b83e92982403"
+                            },
+                            "formation": {
+                              "type": "string",
+                              "example": "any"
+                            },
+                            "league_id": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-06-20T08:27:08.562002"
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-06-20T08:27:08.562002"
+                            },
+                            "classification": {
+                              "type": "string",
+                              "example": "group"
+                            },
+                            "required_bench": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "price_multiplier": {
+                              "type": "integer",
+                              "example": 1000000
+                            },
+                            "required_players": {
+                              "type": "integer",
+                              "example": 15
+                            },
+                            "required_forwards": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "required_defenders": {
+                              "type": "integer",
+                              "example": 5
+                            },
+                            "maximum_price_entry": {
+                              "type": "integer",
+                              "example": 15
+                            },
+                            "minimum_price_entry": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "price_fall_multiple": {
+                              "type": "number",
+                              "example": 0.1
+                            },
+                            "price_rise_multiple": {
+                              "type": "number",
+                              "example": 0.1
+                            },
+                            "default_squad_budget": {
+                              "type": "integer",
+                              "example": 100
+                            },
+                            "max_players_per_team": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "max_transfers_per_gw": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "price_entry_multiple": {
+                              "type": "number",
+                              "example": 0.5
+                            },
+                            "required_goalkeepers": {
+                              "type": "integer",
+                              "example": 2
+                            },
+                            "required_midfielders": {
+                              "type": "integer",
+                              "example": 5
+                            },
+                            "required_starting_squad": {
+                              "type": "integer",
+                              "example": 11
+                            },
+                            "default_starting_forwards": {
+                              "type": "integer",
+                              "example": 2
+                            },
+                            "minimum_starting_forwards": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "default_starting_defenders": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "minimum_starting_defenders": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "default_starting_goalkeepers": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "default_starting_midfielders": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "minimum_starting_goalkeepers": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "minimum_starting_midfielders": {
+                              "type": "integer",
+                              "example": 3
+                            }
+                          }
+                        },
+                        "points_config": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "example": "302e0adb-74dc-4bfd-a8f2-b1d315588e45"
+                            },
+                            "league_id": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-08-14T21:52:36.274558"
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-08-14T21:52:36.274558"
+                            },
+                            "sub_in_points": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "bencher_points": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "starter_points": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "sub_out_points": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "goal_save_ratio": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "own_goal_points": {
+                              "type": "integer",
+                              "example": -2
+                            },
+                            "red_card_points": {
+                              "type": "integer",
+                              "example": -2
+                            },
+                            "goal_save_points": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "yellow_card_points": {
+                              "type": "integer",
+                              "example": -1
+                            },
+                            "forward_goal_points": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "penalty_miss_points": {
+                              "type": "integer",
+                              "example": -2
+                            },
+                            "penalty_save_points": {
+                              "type": "integer",
+                              "example": 7
+                            },
+                            "defender_goal_points": {
+                              "type": "integer",
+                              "example": 5
+                            },
+                            "forward_assist_points": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "minutes_played_points": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "defender_assist_points": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "forward_concede_points": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "goalkeeper_goal_points": {
+                              "type": "integer",
+                              "example": 8
+                            },
+                            "midfielder_goal_points": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "defender_concede_points": {
+                              "type": "number",
+                              "example": -1
+                            },
+                            "goalkeeper_assist_points": {
+                              "type": "integer",
+                              "example": 5
+                            },
+                            "midfielder_assist_points": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "goalkeeper_concede_points": {
+                              "type": "number",
+                              "example": -1
+                            },
+                            "midfielder_concede_points": {
+                              "type": "number",
+                              "example": 0
+                            },
+                            "forward_clean_sheet_points": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "defender_clean_sheet_points": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "forward_goal_concede_points": {
+                              "type": "integer",
+                              "example": 0
+                            },
+                            "defender_goal_concede_points": {
+                              "type": "number",
+                              "example": -0.5
+                            },
+                            "goalkeeper_clean_sheet_points": {
+                              "type": "integer",
+                              "example": 5
+                            },
+                            "midfielder_clean_sheet_points": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "goalkeeper_goal_concede_points": {
+                              "type": "number",
+                              "example": -0.5
+                            },
+                            "midfielder_goal_concede_points": {
+                              "type": "number",
+                              "example": 0
+                            },
+                            "clean_sheet_eligibility_minutes": {
+                              "type": "integer",
+                              "example": 60
+                            },
+                            "time_onfield_eligibility_minutes": {
+                              "type": "integer",
+                              "example": 60
+                            }
+                          }
+                        },
+                        "current_game_week": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "example": "99b01026-edfc-44c3-8f3b-484edc6f22c0"
+                            },
+                            "week": {
+                              "type": "string",
+                              "example": "GW38"
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2026-05-24T17:00:00+00:00"
+                            },
+                            "end_date": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2026-05-24T17:00:00+00:00"
+                            }
+                          }
+                        },
+                        "next_game_week": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "example": "50fb02b4-22dc-4b0e-bbee-55c94030aaf1"
+                            },
+                            "week": {
+                              "type": "string",
+                              "example": "GW12"
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-11-22T11:30:00+00:00"
+                            },
+                            "end_date": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-11-24T23:00:00+00:00"
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/fantasy-league/{id}/clubs": {
