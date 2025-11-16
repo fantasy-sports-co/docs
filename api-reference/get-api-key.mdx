@@ -1,0 +1,57 @@
+---
+title: 'Getting your api key'
+description: Learn how to get your api key to get started.
+---
+
+<Note>
+  We currently do not have a developer dashboard. Our signup flow does allow for secure delivery of your API key to your email using https://privatebin.net
+</Note>
+
+## Signing Up
+To gain access to the API, you need to create a free account with us. You can do so by sending a POST request to the signup endpoint with the bellow request payload.
+
+```HTTP POST
+https://sandbox.api.fantasyfutbol.app/v1/auth/signup
+Content-Type: application/json 
+```
+
+```JSON
+{
+    "email": "[string]",
+    "first_name": "[string]",
+    "last_name": "[string]",
+    "company_name": "[string]",
+    "password": "[string]"
+}
+```
+
+## Verifying your Email
+On sign up request success, you will receive an email with a validation link (see image below). Click on the link to validate your email address. 
+
+<Frame>
+  <img src="/images/confirm-email.png" alt="Signup success email" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+Once your email has been verified on clicking the verification link, you will see the below page which confirms that your email has been verified. 
+
+<Frame>
+  <img src="/images/verification-success.png" alt="Email verified page" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+
+## Retrieving your API Key
+Once your email has been verified, you will receive another email with a secure private bin link to access your API key (see image below). Click on the link to access your API key.
+
+<Note>
+  This secure private bin link is only valid for 1 hour, copy and save the key on your end.
+</Note>
+
+<Frame>
+  <img src="/images/api-key-email.png" alt="Email verified page" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+On clicking the private bin link, you will see your API key as shown below. Copy and save the key on your end.
+
+<Frame>
+  <img src="/images/see-api-key.png" alt="Email verified page" style={{ borderRadius: '0.5rem' }} />
+</Frame>
