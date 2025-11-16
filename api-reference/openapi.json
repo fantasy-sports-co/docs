@@ -1503,7 +1503,212 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Clubs retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Clubs retrieved"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "abbrevation": {
+                            "type": "string"
+                          },
+                          "stadium": {
+                            "type": "string"
+                          },
+                          "logo_url": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "abbrevation",
+                          "stadium",
+                          "logo_url"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "statusCode": 200,
+                    "message": "Clubs retrieved",
+                    "data": [
+                      {
+                        "id": 16,
+                        "name": "Arsenal",
+                        "abbrevation": "ARS",
+                        "stadium": "Emirates Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 12,
+                        "name": "Aston Villa",
+                        "abbrevation": "AST",
+                        "stadium": "Villa Park",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 11,
+                        "name": "Bournemouth",
+                        "abbrevation": "BOU",
+                        "stadium": "Vitality Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 17,
+                        "name": "Brentford",
+                        "abbrevation": "BRE",
+                        "stadium": "Gtech Community Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 19,
+                        "name": "Brighton",
+                        "abbrevation": "BRI",
+                        "stadium": "American Express Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 20,
+                        "name": "Burnley",
+                        "abbrevation": "BUR",
+                        "stadium": "Turf Moor",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 14,
+                        "name": "Chelsea",
+                        "abbrevation": "CHE",
+                        "stadium": "Stamford Bridge",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 9,
+                        "name": "Crystal Palace",
+                        "abbrevation": "CRY",
+                        "stadium": "Selhurst Park",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 10,
+                        "name": "Everton",
+                        "abbrevation": "EVE",
+                        "stadium": "Hill Dickinson Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 7,
+                        "name": "Fulham",
+                        "abbrevation": "FUL",
+                        "stadium": "Craven Cottage",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 146,
+                        "name": "Leeds",
+                        "abbrevation": "LEE",
+                        "stadium": "Elland Road",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 3,
+                        "name": "Liverpool",
+                        "abbrevation": "LIV",
+                        "stadium": "Anfield",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 18,
+                        "name": "Manchester City",
+                        "abbrevation": "MAC",
+                        "stadium": "Etihad Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 4,
+                        "name": "Manchester United",
+                        "abbrevation": "MUN",
+                        "stadium": "Old Trafford",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 13,
+                        "name": "Newcastle",
+                        "abbrevation": "NEW",
+                        "stadium": "St. James' Park",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 5,
+                        "name": "Nottingham Forest",
+                        "abbrevation": "NOT",
+                        "stadium": "The City Ground",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 147,
+                        "name": "Sunderland",
+                        "abbrevation": "SUN",
+                        "stadium": "Stadium of Light",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 2,
+                        "name": "Tottenham",
+                        "abbrevation": "TOT",
+                        "stadium": "Tottenham Hotspur Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 6,
+                        "name": "West Ham",
+                        "abbrevation": "WES",
+                        "stadium": "London Stadium",
+                        "logo_url": null
+                      },
+                      {
+                        "id": 1,
+                        "name": "Wolves",
+                        "abbrevation": "WOL",
+                        "stadium": "Molineux Stadium",
+                        "logo_url": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/fantasy-league/{id}/gameweeks": {
@@ -1532,7 +1737,378 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Gameweeks retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "week": {
+                            "type": "string"
+                          },
+                          "league_id": {
+                            "type": "integer"
+                          },
+                          "is_active": {
+                            "type": "boolean"
+                          },
+                          "start_date": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "end_date": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "week",
+                          "league_id",
+                          "is_active",
+                          "start_date",
+                          "end_date"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ],
+                  "example": {
+                    "statusCode": 200,
+                    "message": "Gameweeks retrieved",
+                    "data": [
+                      {
+                        "id": "56a78c55-2a10-498f-84c5-e668c8fab243",
+                        "week": "1",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-08-15T18:00:00.000Z",
+                        "end_date": "2025-08-18T22:00:00.000Z"
+                      },
+                      {
+                        "id": "93eb4034-a89d-4371-9429-fd45cf6d62cb",
+                        "week": "2",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-08-22T18:00:00.000Z",
+                        "end_date": "2025-08-25T22:00:00.000Z"
+                      },
+                      {
+                        "id": "3e8c727e-b798-445c-89fc-917d27a09c49",
+                        "week": "3",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-08-30T10:30:00.000Z",
+                        "end_date": "2025-08-31T21:00:00.000Z"
+                      },
+                      {
+                        "id": "229f0149-00de-4ed4-bf78-052d39b57954",
+                        "week": "4",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-09-13T10:30:00.000Z",
+                        "end_date": "2025-09-14T18:30:00.000Z"
+                      },
+                      {
+                        "id": "0ba04eb0-a6ad-4ecb-a8f0-4fb2f025fca6",
+                        "week": "5",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-09-20T10:30:00.000Z",
+                        "end_date": "2025-09-21T18:30:00.000Z"
+                      },
+                      {
+                        "id": "cc735ca8-7a32-4817-9c68-5b1d5979180b",
+                        "week": "6",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-09-27T10:30:00.000Z",
+                        "end_date": "2025-09-29T22:00:00.000Z"
+                      },
+                      {
+                        "id": "ee07a505-82e1-4956-9bf8-a945786849f0",
+                        "week": "7",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-10-03T18:00:00.000Z",
+                        "end_date": "2025-10-05T18:30:00.000Z"
+                      },
+                      {
+                        "id": "6412c7b0-c1ba-4ccb-a547-b562136f0a0b",
+                        "week": "8",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-10-18T10:30:00.000Z",
+                        "end_date": "2025-10-20T22:00:00.000Z"
+                      },
+                      {
+                        "id": "7e3ae9b5-05f2-40a7-bc52-0f4fb304ec71",
+                        "week": "9",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-10-24T18:00:00.000Z",
+                        "end_date": "2025-10-26T19:30:00.000Z"
+                      },
+                      {
+                        "id": "cf5defbd-4e86-4001-b5e1-bc327544547d",
+                        "week": "10",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-11-01T14:00:00.000Z",
+                        "end_date": "2025-11-03T23:00:00.000Z"
+                      },
+                      {
+                        "id": "b3ae714f-1a6f-43a7-b81c-e17a70d937ed",
+                        "week": "11",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-11-08T11:30:00.000Z",
+                        "end_date": "2025-11-09T19:30:00.000Z"
+                      },
+                      {
+                        "id": "50fb02b4-22dc-4b0e-bbee-55c94030aaf1",
+                        "week": "12",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-11-22T11:30:00.000Z",
+                        "end_date": "2025-11-24T23:00:00.000Z"
+                      },
+                      {
+                        "id": "39fff1d1-fad3-4bad-96e7-d567ed332fc6",
+                        "week": "13",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-11-29T14:00:00.000Z",
+                        "end_date": "2025-11-30T19:30:00.000Z"
+                      },
+                      {
+                        "id": "40c01e0b-30a0-41d0-ae68-3efcd581cd7a",
+                        "week": "14",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-02T18:30:00.000Z",
+                        "end_date": "2025-12-04T23:00:00.000Z"
+                      },
+                      {
+                        "id": "0427b69f-ed74-441e-a607-69ceb9f80a44",
+                        "week": "15",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-06T11:30:00.000Z",
+                        "end_date": "2025-12-08T23:00:00.000Z"
+                      },
+                      {
+                        "id": "7bd32c31-8498-44b3-b310-fd54c00caffb",
+                        "week": "16",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-13T14:00:00.000Z",
+                        "end_date": "2025-12-15T23:00:00.000Z"
+                      },
+                      {
+                        "id": "9ad4c42f-46c6-452c-ab52-92dc4e8397b2",
+                        "week": "17",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-20T11:30:00.000Z",
+                        "end_date": "2025-12-22T23:00:00.000Z"
+                      },
+                      {
+                        "id": "acce2613-e98b-4dc3-88a9-e1909fe36eda",
+                        "week": "18",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-26T19:00:00.000Z",
+                        "end_date": "2025-12-28T19:30:00.000Z"
+                      },
+                      {
+                        "id": "60f9faae-b46c-4897-bf2a-7aa94f395310",
+                        "week": "19",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2025-12-30T18:30:00.000Z",
+                        "end_date": "2026-01-01T23:00:00.000Z"
+                      },
+                      {
+                        "id": "117b44b2-0a8a-49b8-aa43-bf2b92f0504d",
+                        "week": "20",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-01-03T11:30:00.000Z",
+                        "end_date": "2026-01-04T20:30:00.000Z"
+                      },
+                      {
+                        "id": "dbe24b6b-c7f8-4147-97fa-2711d0a3f1b8",
+                        "week": "21",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-01-06T19:00:00.000Z",
+                        "end_date": "2026-01-08T23:00:00.000Z"
+                      },
+                      {
+                        "id": "95666b2d-92fb-4953-8cc5-488d89d14a78",
+                        "week": "22",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-01-17T17:00:00.000Z",
+                        "end_date": "2026-01-17T17:00:00.000Z"
+                      },
+                      {
+                        "id": "fdf3cd72-5c45-4aab-a37c-186ada8504b0",
+                        "week": "23",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-01-24T17:00:00.000Z",
+                        "end_date": "2026-01-24T17:00:00.000Z"
+                      },
+                      {
+                        "id": "ad85391d-6e85-4165-b0b0-2f3dada48241",
+                        "week": "24",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-01-31T17:00:00.000Z",
+                        "end_date": "2026-01-31T17:00:00.000Z"
+                      },
+                      {
+                        "id": "ec6db3bb-ae1b-440e-9349-7a990f43abbb",
+                        "week": "25",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-02-07T17:00:00.000Z",
+                        "end_date": "2026-02-07T17:00:00.000Z"
+                      },
+                      {
+                        "id": "e127501e-5932-48e1-a08e-ec755cd90266",
+                        "week": "26",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-02-11T22:00:00.000Z",
+                        "end_date": "2026-02-11T22:00:00.000Z"
+                      },
+                      {
+                        "id": "33616f3d-e7c8-4941-b94e-9d58c39752ea",
+                        "week": "27",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-02-21T17:00:00.000Z",
+                        "end_date": "2026-02-21T17:00:00.000Z"
+                      },
+                      {
+                        "id": "d6cec104-5fd7-46ed-a5ac-98a3c3b91ab6",
+                        "week": "28",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-02-28T17:00:00.000Z",
+                        "end_date": "2026-02-28T17:00:00.000Z"
+                      },
+                      {
+                        "id": "b9bc912c-eadf-41b8-b209-75d83ad17617",
+                        "week": "29",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-03-04T22:00:00.000Z",
+                        "end_date": "2026-03-04T22:00:00.000Z"
+                      },
+                      {
+                        "id": "a6a9daeb-672f-4ab1-97b0-77ad4dab278f",
+                        "week": "30",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-03-14T17:00:00.000Z",
+                        "end_date": "2026-03-14T17:00:00.000Z"
+                      },
+                      {
+                        "id": "c9b49514-0fa4-47a7-ad63-52cbc8da5dd8",
+                        "week": "31",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-03-21T17:00:00.000Z",
+                        "end_date": "2026-03-21T17:00:00.000Z"
+                      },
+                      {
+                        "id": "28f6ae35-7a68-48a7-90a3-90936474df48",
+                        "week": "32",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-04-11T16:00:00.000Z",
+                        "end_date": "2026-04-11T16:00:00.000Z"
+                      },
+                      {
+                        "id": "13cd8574-353f-4e6d-ac43-eea3ea248c7d",
+                        "week": "33",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-04-18T16:00:00.000Z",
+                        "end_date": "2026-04-18T16:00:00.000Z"
+                      },
+                      {
+                        "id": "028b5b01-9e39-42c9-b7a7-0ef67cc4bb29",
+                        "week": "34",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-04-25T16:00:00.000Z",
+                        "end_date": "2026-04-25T16:00:00.000Z"
+                      },
+                      {
+                        "id": "67b7cae6-6adb-490b-8e89-a425e6e3b559",
+                        "week": "35",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-05-02T16:00:00.000Z",
+                        "end_date": "2026-05-02T16:00:00.000Z"
+                      },
+                      {
+                        "id": "e03670d9-795c-4751-a725-d94c9deac487",
+                        "week": "36",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-05-09T16:00:00.000Z",
+                        "end_date": "2026-05-09T16:00:00.000Z"
+                      },
+                      {
+                        "id": "135b8851-a339-4273-8c7c-fdd63715f3bb",
+                        "week": "37",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-05-17T16:00:00.000Z",
+                        "end_date": "2026-05-17T16:00:00.000Z"
+                      },
+                      {
+                        "id": "99b01026-edfc-44c3-8f3b-484edc6f22c0",
+                        "week": "38",
+                        "league_id": 7,
+                        "is_active": false,
+                        "start_date": "2026-05-24T17:00:00.000Z",
+                        "end_date": "2026-05-24T17:00:00.000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/fantasy-league/{id}/fixtures": {
@@ -1572,136 +2148,144 @@
         ],
         "responses": {
           "200": {
-            "description": "All fixtures",
-            "headers": {
-              "Server": {
+            "description": "Fixtures retrieved",
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
-                }
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Content-Security-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Cross-Origin-Opener-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Cross-Origin-Resource-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Origin-Agent-Cluster": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Referrer-Policy": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Strict-Transport-Security": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Content-Type-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-DNS-Prefetch-Control": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Download-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Frame-Options": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-Permitted-Cross-Domain-Policies": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-XSS-Protection": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset-Minute": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Limit-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset-Day": {
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "ETag": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Fixtures retrieved"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "week": {
+                            "type": "string"
+                          },
+                          "start_date": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "end_date": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "fixtures": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "goals": {
+                                  "type": "object",
+                                  "properties": {
+                                    "home": {
+                                      "type": "integer"
+                                    },
+                                    "away": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "home",
+                                    "away"
+                                  ]
+                                },
+                                "teams": {
+                                  "type": "object",
+                                  "properties": {
+                                    "home": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "integer"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "abbrevation": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "abbrevation"
+                                      ]
+                                    },
+                                    "away": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "integer"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "abbrevation": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "abbrevation"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "home",
+                                    "away"
+                                  ]
+                                },
+                                "status": {
+                                  "type": "string"
+                                },
+                                "start_date": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "goals",
+                                "teams",
+                                "status",
+                                "start_date"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "week",
+                          "start_date",
+                          "end_date",
+                          "fixtures"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "statusCode",
+                    "message",
+                    "data"
+                  ]
                 }
               }
             }
