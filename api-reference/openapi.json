@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Fantasy Futbol API",
+    "description": "A comprehensive API for building and managing custom fantasy football leagues, squads, and competitions",
     "license": {
       "name": "MIT"
     },
